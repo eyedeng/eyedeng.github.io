@@ -12,7 +12,7 @@ github_repo: "https://github.com/eyedeng/eyedeng.github.io.git" # you code repos
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "about here"
-sidebar-avatar: /img/avatar-m.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/fhp.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
