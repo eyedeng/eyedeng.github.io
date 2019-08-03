@@ -1,7 +1,7 @@
 ---
 layout:     post                    # 使用的布局（不需要改）
 title:      Catalan数               # 标题 
-subtitle:    #副标题
+subtitle:   公式编辑test            #副标题
 date:       2019-08-03              # 时间
 author:     eyedeng                      # 作者
 header-img: img/post-bg-2015.jpg    #这篇文章标题背景图片
