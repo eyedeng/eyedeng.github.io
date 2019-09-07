@@ -4,7 +4,7 @@ title:      BUA招新.prompt               # 标题
 subtitle:   希望能讲完
 date:       2019-09-08              # 时间
 author:     eyedeng                      # 作者
-header-img: img/alg.jpg    #这篇文章标题背景图片
+header-img: img/post-bg-code.PNG    #这篇文章标题背景图片
 catalog: true                       # 是否归档
 tags:                               #标签
     - school
