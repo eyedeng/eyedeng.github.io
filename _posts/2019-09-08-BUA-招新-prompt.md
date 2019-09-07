@@ -1,3 +1,15 @@
+---
+layout:     post                    # 使用的布局（不需要改）
+title:      BUA招新.prompt               # 标题 
+subtitle:   希望能讲完
+date:       2019-09-08              # 时间
+author:     eyedeng                      # 作者
+header-img: img/alg.jpg    #这篇文章标题背景图片
+catalog: true                       # 是否归档
+tags:                               #标签
+    - school
+---
+
 ## 挑选苹果
 1. 首先将第一颗苹果放入口袋中。
 2. 从第二颗苹果开始检查，如果正在检查的苹果比口袋中的还大，则将它捡起放入口袋中，同时丢掉原先口袋中的苹果。反之则继续下一颗苹果。直到最后一颗苹果。
