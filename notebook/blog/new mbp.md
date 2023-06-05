@@ -40,3 +40,16 @@ git config --global http.https://github.com.proxy socks5h://127.0.0.1:7890
 git config --global https.https://github.com.proxy socks5h://127.0.0.1:7890
 ```
 
+.ssh/config配置ssh代理
+
+```shell
+Host github.com
+ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
+```
+
+如果git push走的是https方式（git remote -v检查），改为ssh方式
+
+```
+git remote set-url origin git@github.com:eyedeng/eyedeng.github.io.git
+```
+
