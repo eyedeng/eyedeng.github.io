@@ -181,3 +181,11 @@ override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 
 ```
 
+### UI
+
+###### RecyclerView列表单选
+
+思路：`selectedPosition`，用于保存当前选中项的位置，点击下一项时，`notifyItemChanged`刷新这两项
+
+
+
