@@ -187,5 +187,35 @@ override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 
 思路：`selectedPosition`，用于保存当前选中项的位置，点击下一项时，`notifyItemChanged`刷新这两项
 
+###### 字母索引侧边栏
 
+###### 图片
+
+ImageView scaleType [图解](https://www.jianshu.com/p/32e335d5b842)
+
+
+
+### 权限
+
+### H5
+
+```
+addJavascriptInterface(JsBridge, name)
+```
+
+Cookie注入，参数url可以是domain
+
+```
+domain = ".abc.com"
+cookieManager.setCookie(url, "$name=$value; path=/; domain=$domain")
+```
+
+```
+public boolean shouldOverrideUrlLoading(WebView view, String url) {
+		if (url.startsWith("myscheme")) {
+    		return true;  // 拦截处理
+    }
+		return super.shouldOverrideUrlLoading(view, url);  // false 让WebView正常加载
+}
+```
 
