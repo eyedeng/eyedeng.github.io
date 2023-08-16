@@ -9,7 +9,7 @@ Android Studio使用Gradle自动执行和管理构建流程，同时可创建自
 配置build类型 `buildTypes`
 
 ```groovy
-buildTypes {
+    buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -21,26 +21,27 @@ buildTypes {
         }
 
         staging {
-            
+
         }
+    }
 ```
 
 创建产品变种 `productFlavors`
 
 ```groovy
-flavorDimensions "version"  // 必须属于一个指定的变种维度
-productFlavors {
-  demo {
-    dimension "version"
-    applicationIdSuffix ".demo"
-    versionNameSuffix "-demo"
-  }
-  full {
-    dimension "version"
-    applicationIdSuffix ".full"
-    versionNameSuffix "-full"
-  }
-}
+    flavorDimensions "version"  // 必须属于一个指定的变种维度
+    productFlavors {
+        demo {
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+    }
 ```
 
 ​	从命令行构建应用 `./gradlew task-name`：`./gradlew assembleDebug`

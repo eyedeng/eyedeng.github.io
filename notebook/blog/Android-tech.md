@@ -211,11 +211,11 @@ cookieManager.setCookie(url, "$name=$value; path=/; domain=$domain")
 ```
 
 ```
-public boolean shouldOverrideUrlLoading(WebView view, String url) {
-		if (url.startsWith("myscheme")) {
-    		return true;  // 拦截处理
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url.startsWith("myscheme")) {
+            return true;  // 拦截处理
+        }
+        return super.shouldOverrideUrlLoading(view, url);  // false 让WebView正常加载
     }
-		return super.shouldOverrideUrlLoading(view, url);  // false 让WebView正常加载
-}
 ```
 
