@@ -147,3 +147,18 @@ updateLintBaselineRelease - Update the lint baseline using the release variant
 
 ```
 
+打包aar、jar
+
+Android库：
+
+```groovy
+plugins {
+  id 'com.android.library'
+}
+  
+```
+
+创建aar：在 **Project** 窗口中选择库模块，然后依次点击 **Build > Build APK**
+
+
+

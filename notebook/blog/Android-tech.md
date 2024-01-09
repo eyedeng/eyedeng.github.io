@@ -219,3 +219,32 @@ cookieManager.setCookie(url, "$name=$value; path=/; domain=$domain")
     }
 ```
 
+### 文件
+
+log、图片、zip，创建、写入
+
+上传、下载文件
+
+功能：图片选择展示上传、日志上传
+
+### 内存泄漏
+
+常见原因、场景：
+
+- Static activity、Static view
+
+- 单例中保存activity，因为单例生命周期大于activity生命周期
+
+  new Singleton(context) 改为 new Singleton(context.getApplicationContext())
+
+- Inner Class、Anonymous Class，因为内部类持有外部类的强引用
+
+  改为静态内部类、弱引用activity
+
+弱引用。在GC时，只具有弱引用的对象内存会被回收
+
+```java
+WeakReference<Context> contextWeakReference = new WeakReference<>(context);
+contextWeakReference.get();
+```
+
