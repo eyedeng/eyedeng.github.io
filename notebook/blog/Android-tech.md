@@ -191,9 +191,11 @@ override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 
 ###### 图片
 
+`ImageView控件`和`IV里的图片`的长宽和比例是独立的
+
 ImageView scaleType [图解](https://www.jianshu.com/p/32e335d5b842)
 
-
+adjustViewBounds只有在ImageView一边固定，一边为wrap_content的时候才有意义。设置为true的时候，可以让ImageView的比例和原始图片一样，以达到让图片充满ImageView的效果。
 
 ### 权限
 
