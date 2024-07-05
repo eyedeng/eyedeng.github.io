@@ -68,3 +68,14 @@ myThread.stopSendPowerData();
 
 synchronized 保证同一时刻只有一个线程进入该方法或代码块
 
+### 多线程
+
+```
+创建单线程执行器，所有提交在单独线程顺序执行，适用于串行任务
+ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+mExecutor.submit(() -> {});
+```
+
+## Service
+
+应用进程被kill，service也kill，默认run在主线程

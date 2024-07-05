@@ -250,3 +250,120 @@ WeakReference<Context> contextWeakReference = new WeakReference<>(context);
 contextWeakReference.get();
 ```
 
+### ContentProvider
+
+跨进程共享数据
+
+```java
+getContentResolver().call(CALL_PROVIDER_AUTHORITY, method, arg, extras)
+
+getContentResolver().registerContentObserver(Settings.Secure.getUriFor(NAME), false, mInvisibleObserver)
+        mInvisibleObserver = new ContentObserver(getMainHandler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                
+            }
+        };
+```
+
+### IPC
+
+进程间通信，方式：Binder、Socket
+
+使用多进程唯一方法：给四大组件指定`android:process`
+
+##### AIDL
+
+服务端：定义AIDL文件，创建Service，实现AIDL接口。
+
+```java
+// .aidl
+interface IMyService {
+		void showData(in Bundle para);
+}
+
+
+public class MyService extends Service {
+  	private Binder mBinder = new IMyService.Stub() {
+      
+      	@Override
+        public void showData(Bundle para) throws RemoteException {
+          	// 实现
+        }
+    }
+  
+  	@Override
+    public IBinder onBind(Intent intent) {
+        return mBinder;
+    }  
+  
+}
+```
+
+客户端：bind Service，获取Binder转AIDL接口类型，调用方法。
+
+```java
+		private IMyService mService;
+    private final ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mService = IMyService.Stub.asInterface(iBinder);
+          	mService.showData(para);
+        }
+
+    };
+context.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+```
+
+### VirtualDisplay
+
+代表一个显示器（只不过没有物理实体），应用可以在显示器上打开窗口（副屏镜像），系统可以将其他显示器的内容镜像到它上面（主屏镜像）。显示器内容被渲染到传给Dispaly的Surface。
+
+```java
+VirtualDisplay createVirtualDisplay(@NonNull String name, int width, int height, int densityDpi, @Nullable Surface surface, int flags, @Nullable VirtualDisplay.Callback callback, @Nullable Handler handler) 
+
+mVirtualDisplay.setSurface(surface)
+
+mVirtualDisplay.resize(width, height, density)  更改屏幕尺寸
+```
+
+ MediaCodec#createInputSurface()、ImageReader#getSurface，这些类内部有Surface，以Surface作为输入。添加监听，拿到这些类处理Surface的数据（视频流、图像）。
+
+### 反射
+
+只知道类的某些定义：类名、方法，实例未知，通过反射调用其方法。
+
+```java
+interface ITaskManager {
+  void removeTask(int taskId);
+  
+}
+
+// 某个未知的实例
+static ITaskManager getInstance() {
+  return new ITaskManager() {
+    @Override
+    public void removeTask(int taskId) {
+      System.out.println("remove " + taskId);
+    }
+  };
+}
+
+static Method ITaskManager_removeTask;
+
+try {
+  ITaskManager_removeTask = ITaskManager.class.getDeclaredMethod("removeTask", int.class);
+} catch (NoSuchMethodException e) {
+
+}
+
+try {
+  ITaskManager_removeTask.invoke(getInstance(), taskId);
+} catch (Exception e) {
+
+}
+
+
+```
+
+
