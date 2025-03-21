@@ -366,4 +366,29 @@ try {
 
 ```
 
+#### 屏幕方向
+
+### 音视频
+
+##### 采集 
+
+Audio：AudioRcorder，裸数据PCM
+
+Video：摄像头/屏幕数据 -> Texture -> Surface -> 预览
+
+- `Texture`（纹理）是 **存储图像数据的 GPU 资源**，可以用来渲染画面
+- `Surface` 是 **Android 界面系统的基本绘制单元**，可以接收 GPU 渲染的数据，供 Display 显示
+- `Display` 代表 **可以显示图像的输出设备**，不直接持有图像数据，通过 Surface 获取
+
+##### 编码
+
+`MediaCodec`
+
+##### 播放
+
+`AudioTrack`
+
+### 输入
+
+MotionEvent extends InputEvent  屏幕触摸事件
 
